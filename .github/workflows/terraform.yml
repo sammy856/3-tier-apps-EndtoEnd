@@ -3,6 +3,8 @@ name: Terraform Infrastructure
 on: 
   workflow_dispatch:
   push:
+    paths:
+      - 'infra/**'
     branches:
       - main
 
