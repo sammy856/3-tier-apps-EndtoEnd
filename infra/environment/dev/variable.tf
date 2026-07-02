@@ -10,7 +10,7 @@ variable "subnetdetails" {
 
 }
 
-variable "nicdetails" {
+variable "vmdetails" {
 
 }
 

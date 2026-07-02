@@ -29,8 +29,7 @@ module "subnets" {
 
 module "vms" {
   source              = "../../module/lvm"
-  for_each            = var.nicdetails
-  nic_name            = each.value.nicname
+  for_each            = var.vmdetails
   location            = module.rgs[each.value.rgkey].location
   resource_group_name = module.rgs[each.value.rgkey].rgnames
   subnet_id           = module.subnets[each.value.subnetkey].subnet_ids

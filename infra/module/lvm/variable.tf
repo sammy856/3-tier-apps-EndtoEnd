@@ -1,8 +1,4 @@
-variable "nic_name" {
 
-  type = string
-
-}
 
 variable "location" {
 

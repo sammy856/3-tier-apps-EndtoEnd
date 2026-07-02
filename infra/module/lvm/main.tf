@@ -1,5 +1,5 @@
 resource "azurerm_network_interface" "nic" {
-  name                = var.nic_name
+  name                = "${var.lvm_name}-nic"
   location            = var.location
   resource_group_name = var.resource_group_name
   ip_configuration {
