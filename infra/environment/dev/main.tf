@@ -54,6 +54,7 @@ module "sqlservers" {
 }
 
 module "kvs" {
+  depends_on = [module.sqlservers, module.passwords]
   source              = "../../module/keyvault"
   for_each            = var.kvdetails
   keyvaultname        = each.value.keyvaultname

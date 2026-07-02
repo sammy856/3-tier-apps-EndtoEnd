@@ -1,12 +1,7 @@
 rgdetails = {
   rg1 = {
     rgname   = "sammy-rg1"
-    location = "East US"
-  }
-
-  rg2 = {
-    rgname   = "sammy-rg2"
-    location = "West US"
+    location = "Central India"
   }
 }
 
