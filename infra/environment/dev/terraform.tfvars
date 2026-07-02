@@ -102,3 +102,19 @@ nicdetails = {
   }
 
 }
+
+sqldetails = {
+
+  sql1 = {
+
+    sqlservername = "sammy-sqlserver"
+
+    rgkey = "rg1"
+
+    administrator_login = "sammyadmin"
+
+    administrator_login_password =  "Sammy@123"
+  }
+}
+
+

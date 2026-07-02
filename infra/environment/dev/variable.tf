@@ -11,5 +11,9 @@ variable "subnetdetails" {
 }
 
 variable "nicdetails" {
-    
+
+}
+
+variable "sqldetails" {
+
 }
