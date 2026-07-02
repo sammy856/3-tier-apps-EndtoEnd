@@ -24,7 +24,6 @@ module "subnets" {
   resource_group_name  = module.rgs[each.value.rgkey].rgnames
   virtual_network_name = module.vnets[each.value.vnetkey].vnetnames
   address_prefixes     = each.value.address_prefixes
-  service_endpoints    = each.value.service_endpoints
 }
 
 module "vms" {
