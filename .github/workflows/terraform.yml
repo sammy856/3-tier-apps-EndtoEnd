@@ -13,10 +13,11 @@ jobs:
       run:
         working-directory: infra/environment/dev
     env:
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      ARM_CLIENT_ID: ${{ fromJSON(secrets.creds).clientId }}
+      ARM_CLIENT_SECRET: ${{ fromJSON(secrets.creds).clientSecret }}
+      ARM_SUBSCRIPTION_ID: ${{ fromJSON(secrets.creds).subscriptionId }}
+      ARM_TENANT_ID: ${{ fromJSON(secrets.creds).tenantId }}
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
