@@ -59,10 +59,19 @@ vmdetails = {
 
 sqldetails = {
   sql1 = {
-    sqlservername              = "sammysqlserver"
-    rgkey                      = "rg1"
-    administratorlogin         = "sammyadmin"
-    administratorloginpassword = "Sammy@123"
+    sqlservername      = "sammysqlserver"
+    rgkey              = "rg1"
+    administratorlogin = "sammyadmin"
+  }
+}
+
+kvdetails = {
+  kv1 = {
+    keyvaultname = "sammykeyvault"
+    rgkey        = "rg1"
+    sql_key      = "sql1"
+    sqlpassword   = "sqladminpassword"
+    sqlusername   = "sqlusername"
   }
 }
 

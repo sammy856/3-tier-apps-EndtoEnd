@@ -39,6 +39,10 @@ module "vms" {
   admin_password      = each.value.adminpassword
 }
 
+module "passwords" {
+  source = "../../module/random"
+}
+
 module "sqlservers" {
   source                       = "../../module/sqlserver"
   for_each                     = var.sqldetails
@@ -46,5 +50,19 @@ module "sqlservers" {
   resource_group_name          = module.rgs[each.value.rgkey].rgnames
   location                     = module.rgs[each.value.rgkey].location
   administrator_login          = each.value.administratorlogin
-  administrator_login_password = each.value.administratorloginpassword
+  administrator_login_password = module.passwords.sqlpasswords
+}
+
+module "kvs" {
+  source              = "../../module/keyvault"
+  for_each            = var.kvdetails
+  keyvaultname        = each.value.keyvaultname
+  resource_group_name = module.rgs[each.value.rgkey].rgnames
+  location            = module.rgs[each.value.rgkey].location
+  tenant_id           = data.azurerm_client_config.current.tenant_id
+  object_id           = data.azurerm_client_config.current.object_id
+  sqlusername         = each.value.sqlusername
+  sqlusernamevalue    = module.sqlservers[each.value.sql_key].sqlusernames
+  sqlpassword         = each.value.sqlpassword
+  sqlpasswordvalue    = module.passwords.sqlpasswords
 }

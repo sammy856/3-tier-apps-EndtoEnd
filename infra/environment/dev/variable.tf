@@ -17,3 +17,8 @@ variable "vmdetails" {
 variable "sqldetails" {
 
 }
+
+
+variable "kvdetails" {
+
+}
