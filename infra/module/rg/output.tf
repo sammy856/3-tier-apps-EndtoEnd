@@ -1,17 +1,11 @@
-output "name" {
-
+output "rgnames" {
   value = azurerm_resource_group.rg.name
-
 }
 
 output "location" {
-
   value = azurerm_resource_group.rg.location
-
 }
 
-output "id" {
-
+output "rgids" {
   value = azurerm_resource_group.rg.id
-
 }

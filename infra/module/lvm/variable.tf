@@ -22,40 +22,28 @@ variable "subnet_id" {
 
 }
 
-variable "ip_configuration_name" {
+
+variable "lvm_name" {
 
   type = string
 
 }
 
-variable "private_ip_allocation" {
+variable "vm_size" {
 
   type = string
 
-  default = "Dynamic"
-
 }
 
-variable "private_ip" {
+variable "admin_username" {
 
   type = string
 
-  default = null
-
 }
 
-variable "public_ip_id" {
+variable "admin_password" {
 
   type = string
 
-  default = null
-
 }
 
-variable "tags" {
-
-  type = map(string)
-
-  default = {}
-
-}
