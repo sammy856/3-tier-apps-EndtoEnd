@@ -43,6 +43,7 @@ module "passwords" {
 }
 
 module "sqlservers" {
+  depends_on = [module.rgs, module.passwords, module.vnets, module.subnets]
   source                       = "../../module/sqlserver"
   for_each                     = var.sqldetails
   sqlservername                = each.value.sqlservername
@@ -61,8 +62,13 @@ module "kvs" {
   location            = module.rgs[each.value.rgkey].location
   tenant_id           = data.azurerm_client_config.current.tenant_id
   object_id           = data.azurerm_client_config.current.object_id
-  sqlusername         = each.value.sqlusername
-  sqlusernamevalue    = module.sqlservers[each.value.sql_key].sqlusernames
-  sqlpassword         = each.value.sqlpassword
-  sqlpasswordvalue    = module.passwords.sqlpasswords
+}
+
+module "kv_secrets" {
+  depends_on = [module.kvs, module.sqlservers]
+  source              = "../../module/keyvault_secrets"
+  for_each            = var.kvsecretdetails
+  keyvault_id         = module.kvs[each.value.kvkey].keyvault_ids
+  secret_name         = each.value.secretname
+  secret_value        = module.passwords.sqlpasswords
 }

@@ -32,7 +32,6 @@ vmdetails = {
     lvmname       = "frontendvm1"
     rgkey         = "rg1"
     subnetkey     = "subnet1"
-    pipkey        = "pip1"
     vmsize        = "Standard_DS2_v2"
     adminusername = "azureuser"
     adminpassword = "Azure@123"
@@ -41,7 +40,6 @@ vmdetails = {
     lvmname       = "backendvm1"
     rgkey         = "rg1"
     subnetkey     = "subnet1"
-    pipkey        = "pip2"
     vmsize        = "Standard_DS2_v2"
     adminusername = "azureuser"
     adminpassword = "Azure@123"
@@ -61,10 +59,13 @@ kvdetails = {
   kv1 = {
     keyvaultname = "sammykeyvault"
     rgkey        = "rg1"
-    sql_key      = "sql1"
-    sqlpassword   = "sqladminpassword"
-    sqlusername   = "sqlusername"
   }
 }
 
 
+kvsecretdetails = {
+  kvsecret1 = {
+    kvkey      = "kv1"
+    secretname = "sqladminpassword"
+  }
+}

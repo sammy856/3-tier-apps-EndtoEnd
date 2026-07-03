@@ -18,18 +18,3 @@ variable "object_id" {
   
 }
 
-variable "sqlusername" {
-  
-}
-
-variable "sqlpassword" {
-  
-}
-
-variable "sqlusernamevalue" {
-  
-}
-
-variable "sqlpasswordvalue" {
-  
-}

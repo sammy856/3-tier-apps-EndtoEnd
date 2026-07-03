@@ -27,15 +27,7 @@ resource "azurerm_key_vault" "key_vault" {
   }
 }
 
-resource "azurerm_key_vault_secret" "kv_sqlusername" {
-  name         = var.sqlusername
-  value        = var.sqlusernamevalue
-  key_vault_id = azurerm_key_vault.key_vault.id
-}
 
-
-resource "azurerm_key_vault_secret" "kv_sqlpassword" {
-  name         = var.sqlpassword
-  value        = var.sqlpasswordvalue
-  key_vault_id = azurerm_key_vault.key_vault.id
+output "keyvault_ids" {
+  value = azurerm_key_vault.key_vault.id
 }

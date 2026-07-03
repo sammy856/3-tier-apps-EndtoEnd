@@ -22,3 +22,7 @@ variable "sqldetails" {
 variable "kvdetails" {
 
 }
+
+variable "kvsecretdetails" {
+
+}
