@@ -1,7 +1,7 @@
 rgdetails = {
   rg1 = {
     rgname   = "sammy-rg1"
-    location = "Central India"
+    location = "centralindia"
   }
 }
 
@@ -38,7 +38,7 @@ vmdetails = {
     lvmname       = "frontendvm1"
     rgkey         = "rg1"
     subnetkey     = "subnet1"
-    vmsize        = "Standard_DS2_v2"
+    vmsize        = "Standard_D2s_v3"
     adminusername = "azureuser"
     adminpassword = "Azure@123"
   }
@@ -46,7 +46,7 @@ vmdetails = {
     lvmname       = "backendvm1"
     rgkey         = "rg1"
     subnetkey     = "subnet2"
-    vmsize        = "Standard_DS2_v2"
+    vmsize        = "Standard_D2s_v3"
     adminusername = "azureuser"
     adminpassword = "Azure@123"
     identitykey   = "identity1"
@@ -67,7 +67,7 @@ sqldetails = {
 
 kvdetails = {
   kv1 = {
-    keyvaultname = "sammykeyvault"
+    keyvaultname = "sammykeyvault-dev01"
     rgkey        = "rg1"
     identitykey  = "identity1"
     subnetkey    = "subnet2"
