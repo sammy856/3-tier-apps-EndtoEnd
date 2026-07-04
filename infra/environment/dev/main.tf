@@ -65,14 +65,15 @@ module "sqlservers" {
 }
 
 module "kvs" {
-  depends_on          = [module.sqlservers, module.passwords, module.identities]
-  source              = "../../module/keyvault"
-  for_each            = var.kvdetails
-  keyvaultname        = each.value.keyvaultname
-  resource_group_name = module.rgs[each.value.rgkey].rgnames
-  location            = module.rgs[each.value.rgkey].location
-  tenant_id           = data.azurerm_client_config.current.tenant_id
-  object_id           = module.identities[each.value.identitykey].principal_ids
+  depends_on             = [module.sqlservers, module.passwords, module.identities]
+  source                 = "../../module/keyvault"
+  for_each               = var.kvdetails
+  keyvaultname           = each.value.keyvaultname
+  resource_group_name    = module.rgs[each.value.rgkey].rgnames
+  location               = module.rgs[each.value.rgkey].location
+  tenant_id              = data.azurerm_client_config.current.tenant_id
+  object_id              = module.identities[each.value.identitykey].principal_ids
+  additional_object_ids  = [data.azurerm_client_config.current.object_id]
 }
 
 module "kv_secrets" {

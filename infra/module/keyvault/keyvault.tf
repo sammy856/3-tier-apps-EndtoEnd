@@ -10,8 +10,8 @@ resource "azurerm_key_vault" "key_vault" {
   sku_name = "standard"
 
   access_policy {
-    tenant_id = var.tenant_id #data.azurerm_client_config.current.tenant_id
-    object_id = var.object_id #data.azurerm_client_config.current.object_id
+    tenant_id = var.tenant_id
+    object_id = var.object_id
 
     key_permissions = [
       "Get",
@@ -19,11 +19,35 @@ resource "azurerm_key_vault" "key_vault" {
 
     secret_permissions = [
       "Get",
+      "List",
+      "Set",
     ]
 
     storage_permissions = [
       "Get",
     ]
+  }
+
+  dynamic "access_policy" {
+    for_each = var.additional_object_ids
+    content {
+      tenant_id = var.tenant_id
+      object_id = access_policy.value
+
+      key_permissions = [
+        "Get",
+      ]
+
+      secret_permissions = [
+        "Get",
+        "List",
+        "Set",
+      ]
+
+      storage_permissions = [
+        "Get",
+      ]
+    }
   }
 }
 

@@ -18,3 +18,8 @@ variable "object_id" {
 
 }
 
+variable "additional_object_ids" {
+  type    = list(string)
+  default = []
+}
+
