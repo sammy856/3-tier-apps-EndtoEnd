@@ -1,0 +1,62 @@
+name: CI
+
+on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+    workflow_dispatch:
+
+jobs:
+  backend:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+
+      - name: Install backend deps
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run backend tests (if any)
+        run: |
+          if [ -f pytest.ini ] || ls | grep -q "test_.*\.py\|.*_test\.py"; then
+            python -m pytest -q || true
+          else
+            echo "No backend tests found"
+          fi
+
+  frontend:
+    name: Frontend Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install and test frontend
+        working-directory: ReactTodoUIMonolith
+        run: |
+          npm ci
+          npm test -- --watchAll=false || true

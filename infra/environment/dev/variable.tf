@@ -26,3 +26,7 @@ variable "kvdetails" {
 variable "kvsecretdetails" {
 
 }
+
+variable "identitydetails" {
+
+}

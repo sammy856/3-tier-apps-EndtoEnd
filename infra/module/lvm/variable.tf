@@ -43,3 +43,18 @@ variable "admin_password" {
 
 }
 
+variable "user_assigned_identity_ids" {
+  type    = list(string)
+  default = []
+}
+
+variable "ssh_public_key" {
+  type    = string
+  default = ""
+}
+
+variable "create_public_ip" {
+  type    = bool
+  default = false
+}
+

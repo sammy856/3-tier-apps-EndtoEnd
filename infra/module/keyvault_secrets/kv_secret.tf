@@ -5,14 +5,14 @@ resource "azurerm_key_vault_secret" "kv_sqlusername" {
 }
 
 variable "secret_name" {
-  
+
 }
 
 variable "secret_value" {
-  
+
 }
 
 
 variable "keyvault_id" {
-  
+
 }
